@@ -1,0 +1,136 @@
+// This Program is made by daksh on an online copiler (https://www.onlinegdb.com/online_c_compiler/#)
+//This Program Helps to calculate compound intrest
+
+//                                  **Input format should be:
+
+// Principle_amount   Totala_amount/Final_Amount/Maturity_value     Intrest_rate    Time
+
+// (or)
+
+// Principle_amount 
+// Totala_amount/Final_Amount/Maturity_value
+// Intrest_rate
+// Time
+
+//                        **Put what needs to be calculated as zero(0)
+
+
+
+#include <stdio.h>
+
+
+int initail( double inal, double gol, double per, double tim){
+double count=0;
+per=(per/100)+1;
+//printf("\n\n%lf\n\n",per);
+while(count<tim){
+
+ gol=gol/per;
+// printf("%d",inal);
+ count++;
+ 
+}
+printf("Inital Amount to be invested %.2lf",gol);
+
+return 0;
+}
+
+int gole( double inal, double gol, double per, double tim){
+
+double count=1;
+while(count<tim+1){
+    // increase am(incriment)=inc
+    double inc;
+    inc=inal*per/100;
+    inal=inal+inc;
+    printf("Amount after %.0lf Unit time %.2lf \n",count,inal);
+    count++;
+}
+printf("Final Amount %.2lf",inal);
+
+return 0;
+}
+
+int intrest_rate( double inal, double gol, double per, double tim){
+// Patm is principle amount 
+// Unsing logthms this can be solved
+// Pamt*(Intrest+1)=Total  amount : for one cycle
+// for N cycles:  Pamt * (Intrest+1)^N =Total
+// so  N = log(Total Amt/Pamt) to base N
+// which can be writen as N= log(Total Amt/Pamt)/log(N)
+
+per = log(gol/inal) / log(tim);
+printf("Atleast  %.3lf Percent Intrest Rate Reqired");
+
+}
+
+int time_( double inal, double gol, double per, double tim){
+double count=0;
+per=(per/100)+1;
+//printf("\n\n%lf\n\n",per);
+while(inal<gol){
+
+ inal=inal*per;
+// printf("%d",inal);
+ count++;
+ }
+ tim=count;
+printf("Time taken '%.0lf' Unit",count);
+
+// printf("%d",inal);
+return 0;
+}
+
+int main()
+{
+double inal=0.0, gol=0.0,per=0.0, tim=0.0;
+scanf("%lf",&inal);
+scanf("%lf",&gol);
+scanf("%lf",&per);
+scanf("%lf",&tim);
+
+double easy[4]={inal,gol,per,tim};
+int choice;
+
+puts("Enter the Initial Amount to be Invested");
+printf("%lf\n",inal);
+puts("\nEnter your goal Amountnt");
+// scanf("%ld",&gol);
+printf("%lf",gol);
+puts("\n\nEnter the estimated Intrest Rate per Unit");
+printf("%lf percent\n",per);
+// printf("%ld %\n",per);
+puts("\nEnter the Timr Unit of taken");
+printf("%lf Units \n\n",tim);
+
+for(int i=0;i<4;i++){
+    if(easy[i]==0)
+    choice=i;
+}
+
+
+switch (choice) {
+case 0:
+// printf("Choice is 0");
+initail(inal,gol,per,tim);
+break;
+case 1:
+// printf("Choice is 1");
+gole(inal,gol,per,tim);
+break;
+
+case 2:
+// printf("Choice is 2");
+intrest_rate(inal,gol,per,tim);
+break;
+case 3:
+printf("Choice is 3");
+time_(inal,gol,per,tim);
+break;
+default:
+printf("Not valid inputs ");
+break;
+}
+
+return 0;
+}
