@@ -1,2 +1,2 @@
-# solid-octa-meme
+# Compund interest calculator
 the desvription
